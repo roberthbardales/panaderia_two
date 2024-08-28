@@ -1,0 +1,39 @@
+{% load static %}
+<style>
+  .bg-barra {
+    background-color: #4b4b4b;
+    position: fixed; /* Fija la posición */
+    top: 0; /* Alinea en la parte superior */
+    width: 100%; /* Ocupa todo el ancho */
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+  }
+</style>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Panaderia</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-sm-none d-md-block" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-1">
+          <a class="nav-link active text-white " href="#">Usuario: {{ user.full_name }}</a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link btn btn-outline-success" href="">Agregar</a>
+        </li>
+        <li class="nav-item mx-1 border border-success border-1 rounded">
+          <a class="nav-link btn btn-outline-success text-white" href="">causa</a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link active btn btn-warning" aria-current="page" href="{% url 'users_app:user-logout' %}">Perfil</a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link active btn btn-danger" aria-current="page" href="{% url 'users_app:user-logout' %}">Salir</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

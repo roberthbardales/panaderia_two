@@ -1,0 +1,71 @@
+{% extends "panel.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Formulario de Registro</h2>
+  <form class="" method="POST">{% csrf_token %}
+    <!-- Email -->
+    <div class="form-group">
+        <label for="email">Email</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}
+        <p class="cell" style="color: red;">
+          {{ error|escape }}
+        </p>
+      {% endfor %}
+      </div>
+      <!-- Nombre -->
+      <div class="form-group">
+          <label for="nombre">Nombre</label>
+          {{form.full_name}}
+        </div>
+        <!-- Permisos -->
+        <div class="form-group">
+            <label for="permisos">Permisos</label>
+            {{form.ocupation}}
+        </div>
+      <!-- Género -->
+      <div class="form-group">
+          <label for="genero">Género</label>
+            {{form.genero}}
+      </div>
+      <!-- Fecha de Nacimiento -->
+      <div class="form-group">
+          <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+          {{ form.date_birth }}
+      </div>
+      <!-- Contraseña -->
+      <div class="form-group">
+          <label for="password">Contraseña</label>
+          {{ form.password1 }}
+      </div>
+      {% for error in form.password1.errors %}
+      <p class="cell" style="color: red;">
+        {{ error|escape }}
+      </p>
+    {% endfor %}
+      <!-- Repetir Contraseña -->
+      <div class="form-group">
+          <label for="confirm_password">Repetir Contraseña</label>
+          {{ form.password2 }}
+        </div>
+        {% for error in form.password2.errors %}
+        <p class="cell" style="color: red;">
+          {{ error|escape }}
+        </p>
+      {% endfor %}
+
+      <!-- Botón de Enviar -->
+      <div class="form-group mt-4 mb-4  text-center">
+        <button type="submit" class="btn btn-primary" style="width: 300px;">Registrarse</button>
+        {% if object %}
+        <a href="#" class="cell alert button clear">Eliminar</a>
+        {% endif %}
+      </div>
+  </form>
+</div>
+
+{% endblock panel-content %}

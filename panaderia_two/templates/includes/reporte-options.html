@@ -1,0 +1,29 @@
+<div class="row ">
+  <div class="col-md-4">
+      <div class="card text-center" style="background-color: #4caf50;">
+          <a class="card-body {% if request.resolver_match.url_name == 'admin-reporte' %}activeli{% endif %}"
+             href="{% url 'home_app:admin-reporte' %}"
+             style="font-weight: bold; font-size: 16px; color: white;">
+              Informe de Ingresos
+          </a>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="card text-center" style="background-color: #4caf50;">
+          <a class="card-body {% if request.resolver_match.url_name == 'admin-liquidacion' %}activeli{% endif %}"
+             href="{% url 'home_app:admin-liquidacion' %}"
+             style="font-weight: bold; font-size: 16px; color: white;">
+              Liquidación Proveedores
+          </a>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="card text-center" style="background-color: #4caf50;">
+          <a class="card-body {% if request.resolver_match.url_name == 'admin-resumen_ventas' %}activeli{% endif %}"
+             href="{% url 'home_app:admin-resumen_ventas' %}"
+             style="font-weight: bold; font-size: 16px; color: white;">
+              Resumen Ventas
+          </a>
+      </div>
+  </div>
+</div>

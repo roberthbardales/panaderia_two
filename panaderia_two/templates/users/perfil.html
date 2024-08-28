@@ -1,0 +1,20 @@
+{% extends "users/base_users.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+<div class="card " style="width:20rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Usuario: {{ user.full_name }}</h5>
+      <hr>
+      <p class="card-text">Correo: {{ user.email }}</p>
+      <p class="card-text">Permiso: {{ user.get_ocupation_display }}</p>
+      <p class="card-text">Activo: {{ user.is_active }}</p>
+
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
+
+
+{% endblock panel-content %}

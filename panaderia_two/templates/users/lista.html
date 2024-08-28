@@ -1,0 +1,64 @@
+{% extends "users/base_users.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+
+{% if user.ocupation == "0" or user.is_superuser %}
+<div class="container mt-1 ">
+    <h2 class="mb-4 text-center">Usuarios del Sistema</h2> <!-- Título centrado -->
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Email</th>
+                <th>Nombres</th>
+                <th>Última Conexión</th>
+                <th>Permisos</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.full_name }}</td>
+              <td>{{ usuario.last_login }}</td>
+              <td>{{ usuario.get_ocupation_display }}</td>
+              <td>
+                {% if usuario.is_active %}
+                  <span class="bg-success">Activo</span>
+                {% else %}
+                  <span class="bg-danger">De Baja</span>
+                {% endif %}
+              </td>
+              <td>
+              <a href="{% url 'users_app:user-update' usuario.pk %}" class="btn btn-warning btn-sm">Modificar</a>
+              </td>
+            </tr>
+          {% endfor %}
+            <!-- <tr>
+                <td>usuario@example.com</td>
+                <td>Juan Pérez</td>
+                <td>2024-08-12 14:30</td>
+                <td>Administrador</td>
+                <td>Activo</td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Editar</button>
+                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                </td>
+            </tr> -->
+
+        </tbody>
+    </table>
+    <!-- Botón para agregar nuevo usuario -->
+    <div class="text-center mt-4">
+        <a class="btn btn-primary btn-lg" href="{% url 'users_app:user-register' %}" >Agregar Nuevo Usuario</a>
+    </div>
+    <div class="text-center py-4">
+        <a class="btn btn-danger btn-lg" href="{% url 'users_app:user-update_password' %}" >Cambiar Contraseña</a>
+    </div>
+</div>
+{% endif %}
+{% endblock panel-content %}

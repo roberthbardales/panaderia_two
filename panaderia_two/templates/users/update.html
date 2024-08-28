@@ -1,0 +1,62 @@
+{% extends "users/base_users.html" %}
+
+{% load  static %}
+
+{% block panel-content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Formulario de Registro</h2>
+  <form class="" method="POST">{% csrf_token %}
+    <!-- Email -->
+    <div class="form-group">
+        <label for="email">Email</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}
+        <p class="cell" style="color: red;">
+          {{ error|escape }}
+        </p>
+      {% endfor %}
+      </div>
+      <!-- Nombre -->
+      <div class="form-group">
+          <label for="nombre">Nombre</label>
+          {{form.full_name}}
+        </div>
+        <!-- Permisos -->
+        <div class="form-group">
+            <label for="permisos">Permisos</label>
+            {{form.ocupation}}
+        </div>
+      <!-- Género -->
+      <div class="form-group">
+          <label for="genero">Género</label>
+            {{form.genero}}
+      </div>
+      <!-- Fecha de Nacimiento -->
+      <div class="form-group">
+          <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+          {{ form.date_birth }}
+      </div>
+      <!-- Usuario Activo -->
+      <div class="form-group">
+          <label for="fecha_nacimiento">Usuario Activo</label>
+          {{ form.is_active }}
+      </div>
+
+      <!-- Botón de Enviar -->
+      <div class="form-group mt-4 mb-4  text-center">
+        <button type="submit" class="btn btn-success" style="width: 300px;">Guardar</button>
+        <!-- {% if object %}
+        <a href="#" class="cell alert button clear">Eliminar</a>
+        {% endif %} -->
+      </div>
+  </form>
+  <form class="form-group mt-4 mb-4  text-center" action="{% url 'users_app:user-delete' object.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+  </form>
+</div>
+
+{% endblock panel-content %}
+
+
